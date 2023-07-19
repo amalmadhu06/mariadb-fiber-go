@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/di"
 	"github.com/amalmadhu06/mariadb-fiber-go/pkg/config"
-	"github.com/amalmadhu06/mariadb-fiber-go/pkg/di"
 	"log"
 )
 

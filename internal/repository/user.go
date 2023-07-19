@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/amalmadhu06/mariadb-fiber-go/pkg/repository/interfaces"
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/repository/interfaces"
 	"gorm.io/gorm"
 )
 

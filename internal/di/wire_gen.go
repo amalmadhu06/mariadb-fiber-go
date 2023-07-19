@@ -7,24 +7,24 @@
 package di
 
 import (
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/web"
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/web/handler"
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/repository"
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/services"
 	"github.com/amalmadhu06/mariadb-fiber-go/pkg/config"
 	"github.com/amalmadhu06/mariadb-fiber-go/pkg/db"
-	"github.com/amalmadhu06/mariadb-fiber-go/pkg/http"
-	"github.com/amalmadhu06/mariadb-fiber-go/pkg/http/handler"
-	"github.com/amalmadhu06/mariadb-fiber-go/pkg/repository"
-	"github.com/amalmadhu06/mariadb-fiber-go/pkg/usecase"
 )
 
 // Injectors from wire.go:
 
-func InitializeAPI(cfg config.Config) (*http.ServerHTTP, error) {
+func InitializeAPI(cfg config.Config) (*web.ServerHTTP, error) {
 	gormDB, err := db.ConnectDatabase(cfg)
 	if err != nil {
 		return nil, err
 	}
 	userRepo := repository.NewUserRepository(gormDB)
-	userUsecase := usecase.NewUserUsecase(userRepo)
+	userUsecase := services.NewUserUsecase(userRepo)
 	userHandler := handler.NewUserHandler(userUsecase)
-	serverHTTP := http.NewServerHTTP(userHandler)
+	serverHTTP := web.NewServerHTTP(userHandler)
 	return serverHTTP, nil
 }

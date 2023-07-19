@@ -1,7 +1,7 @@
-package http
+package web
 
 import (
-	"github.com/amalmadhu06/mariadb-fiber-go/pkg/http/handler"
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/web/handler"
 	"github.com/gofiber/fiber/v2"
 	fiberSwagger "github.com/swaggo/fiber-swagger"
 	"log"
@@ -30,7 +30,7 @@ func NewServerHTTP(userHandler *handler.UserHandler) *ServerHTTP {
 
 func (s *ServerHTTP) Start() {
 	if err := s.app.Listen(":3000"); err != nil {
-		log.Fatal("failed to start http server on port 3000: ", err)
+		log.Fatal("failed to start web server on port 3000: ", err)
 	}
 	log.Println("server listening to port 3000")
 }

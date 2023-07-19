@@ -1,15 +1,15 @@
 package handler
 
 import (
-	"github.com/amalmadhu06/mariadb-fiber-go/pkg/usecase/services"
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/services/interfaces"
 	"github.com/gofiber/fiber/v2"
 )
 
 type UserHandler struct {
-	userUsecase services.UserUsecase
+	userUsecase interfaces.UserUsecase
 }
 
-func NewUserHandler(usecase services.UserUsecase) *UserHandler {
+func NewUserHandler(usecase interfaces.UserUsecase) *UserHandler {
 	return &UserHandler{
 		userUsecase: usecase,
 	}
