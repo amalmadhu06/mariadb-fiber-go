@@ -1,15 +1,15 @@
 package services
 
 import (
-	"github.com/amalmadhu06/mariadb-fiber-go/internal/repository/interfaces"
-	"github.com/amalmadhu06/mariadb-fiber-go/internal/services/interfaces"
+	repo "github.com/amalmadhu06/mariadb-fiber-go/internal/repository/interfaces"
+	svc "github.com/amalmadhu06/mariadb-fiber-go/internal/services/interfaces"
 )
 
 type userUsecase struct {
-	userRepo interfaces.UserRepo
+	userRepo repo.UserRepo
 }
 
-func NewUserUsecase(userRepo interfaces.UserRepo) interfaces.UserUsecase {
+func NewUserUsecase(userRepo repo.UserRepo) svc.UserUsecase {
 	return &userUsecase{
 		userRepo: userRepo,
 	}
