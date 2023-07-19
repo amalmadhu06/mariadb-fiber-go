@@ -7,10 +7,10 @@
 package di
 
 import (
-	"github.com/amalmadhu06/mariadb-fiber-go/internal/web"
-	"github.com/amalmadhu06/mariadb-fiber-go/internal/web/handler"
 	"github.com/amalmadhu06/mariadb-fiber-go/internal/repository"
 	"github.com/amalmadhu06/mariadb-fiber-go/internal/services"
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/web"
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/web/handler"
 	"github.com/amalmadhu06/mariadb-fiber-go/pkg/config"
 	"github.com/amalmadhu06/mariadb-fiber-go/pkg/db"
 )
