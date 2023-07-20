@@ -1,6 +1,10 @@
+SHELL := /bin/bash
 
-wire: ## Generate wire_gen.go
+wire:
 	cd internal/di && wire
 
 run:
-	cd cmd/api && go run main.go
+	go run main.go
+
+build:
+	go build main.go
