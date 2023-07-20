@@ -7,6 +7,7 @@
 package di
 
 import (
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/memory"
 	"github.com/amalmadhu06/mariadb-fiber-go/internal/repository"
 	"github.com/amalmadhu06/mariadb-fiber-go/internal/services"
 	"github.com/amalmadhu06/mariadb-fiber-go/internal/web"
@@ -17,14 +18,17 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeAPI(cfg config.Config) (*web.ServerHTTP, error) {
+// InjectDependencies takes in configuration values and inject dependencies
+// using google wire
+func InjectDependencies(cfg config.Config) (*web.ServerHTTP, error) {
 	gormDB, err := db.ConnectDatabase(cfg)
 	if err != nil {
 		return nil, err
 	}
-	userRepo := repository.NewUserRepository(gormDB)
-	userUsecase := services.NewUserUsecase(userRepo)
-	userHandler := handler.NewUserHandler(userUsecase)
-	serverHTTP := web.NewServerHTTP(userHandler)
+	offerRepo := repository.NewOfferRepository(gormDB)
+	offerMemory := memory.NewOfferMemory(offerRepo)
+	offerUsecase := services.NewOfferUsecase(offerRepo, offerMemory)
+	offerHandler := handler.NewOfferHandler(offerUsecase)
+	serverHTTP := web.NewServerHTTP(offerHandler)
 	return serverHTTP, nil
 }

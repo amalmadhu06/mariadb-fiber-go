@@ -4,6 +4,7 @@
 package di
 
 import (
+	"github.com/amalmadhu06/mariadb-fiber-go/internal/memory"
 	"github.com/amalmadhu06/mariadb-fiber-go/internal/repository"
 	"github.com/amalmadhu06/mariadb-fiber-go/internal/services"
 	"github.com/amalmadhu06/mariadb-fiber-go/internal/web"
@@ -13,19 +14,24 @@ import (
 	"github.com/google/wire"
 )
 
-func InitializeAPI(cfg config.Config) (*web.ServerHTTP, error) {
+// InjectDependencies takes in configuration values and inject dependencies
+// using google wire
+func InjectDependencies(cfg config.Config) (*web.ServerHTTP, error) {
 	wire.Build(
 		// database connection
 		db.ConnectDatabase,
 
 		//handler
-		handler.NewUserHandler,
+		handler.NewOfferHandler,
 
 		//services
-		services.NewUserUsecase,
+		services.NewOfferUsecase,
+
+		// memory
+		memory.NewOfferMemory,
 
 		//repository
-		repository.NewUserRepository,
+		repository.NewOfferRepository,
 
 		//server
 		web.NewServerHTTP,
