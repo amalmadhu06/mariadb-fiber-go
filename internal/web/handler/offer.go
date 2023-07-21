@@ -7,6 +7,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	_ "go.mongodb.org/mongo-driver/bson"
 	"net/http"
+	"strings"
 )
 
 type OfferHandler struct {
@@ -20,7 +21,8 @@ func NewOfferHandler(usecase interfaces.OfferUsecase) *OfferHandler {
 }
 
 func (o *OfferHandler) GetOffer(c *fiber.Ctx) error {
-	country := c.Params("country")
+	param := c.Params("country")
+	country := strings.ToUpper(param)
 	// Todo : Pagination
 	if country == "" {
 		return c.Status(http.StatusBadRequest).JSON(fiber.Error{
@@ -32,7 +34,7 @@ func (o *OfferHandler) GetOffer(c *fiber.Ctx) error {
 
 	offers, err := o.offerUsecase.GetOffer(context.TODO(), country)
 	if err != nil {
-		return fiber.NewError(http.StatusInternalServerError, "failed to retrieve data")
+		return fiber.NewError(http.StatusInternalServerError, err.Error())
 	}
 
 	if respFormat == "application/bson" {
