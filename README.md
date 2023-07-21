@@ -1,23 +1,38 @@
-# Ram Coverage with Go, Fiber and MariaDB
-Web server built with Go Programming Language, Fiber framework and MariaDB.
+# Web server with MariaDB and GoFiber
 
 
+## Test Locally
 
-## Git commit message format
- | Category | 	Commit Message Example                   |
- |----------|-------------------------------------------|
- | feat     | feat(db): Add user authentication feature |
- | fix	     | fix(api): Resolve incorrect response      |
- | docs     | docs(readme): Update installation guide   |
- | style    | style(css): Format login button's design  |
- | refactor | 	refactor(db): Optimize database queries  |
- | test     | test(api): Add unit test for user service |
-  | chore   | chore(deps): Update dependency packages   | 
-
-1.  `feat`: For new features or significant updates.
-2. `fix`: For bug fixes or resolving issues.
-3. `docs`: For documentation-related changes.
-4. `style`: For changes that only affect the visual appearance.
-5. `refactor`: For code refactoring and improvements without changing functionality.
-6. `test`: For adding or updating test cases.
-7. `chore`: For general maintenance tasks, such as updating dependencies.
+### 1. Clone Repository to local machine
+```shell
+git clone https://github.com/amalmadhu06/mariadb-fiber-go.git
+```
+### 2. Change directory
+```shell
+cd mariadb-fiber-go
+```
+### 3. Download dependencies
+```shell
+go mod download
+```
+### 4. Set up a MariaDB database
+Set up a MariaDB database and add schema and data in the `pkg/db/sql` folder
+### 5. Configure .env
+Rename the `.env.example` to `dev.env` and update the content according to your database set up.
+### 6. Run the server locally
+```shell
+make run 
+```
+### Endpoints
+```shell
+curl -X GET http://127.0.0.1:3000/offer/us
+```
+```shell
+curl -X GET http://127.0.0.1:3000/offer/fr
+```
+```shell
+curl -X GET http://127.0.0.1:3000/offer/ca
+```
+```shell
+curl -X GET http://127.0.0.1:3000/offer/br
+```
