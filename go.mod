@@ -12,7 +12,7 @@ require (
 	github.com/swaggo/fiber-swagger v1.3.0
 	go.mongodb.org/mongo-driver v1.12.0
 	gorm.io/driver/mysql v1.5.1
-	gorm.io/gorm v1.25.2
+	gorm.io/gorm v1.25.4
 )
 
 require (
