@@ -3,7 +3,7 @@ module github.com/amalmadhu06/mariadb-fiber-go
 go 1.19
 
 require (
-	github.com/go-playground/validator/v10 v10.15.3
+	github.com/go-playground/validator/v10 v10.15.4
 	github.com/gofiber/fiber/v2 v2.49.0
 	github.com/golang/mock v1.6.0
 	github.com/google/wire v0.5.0
