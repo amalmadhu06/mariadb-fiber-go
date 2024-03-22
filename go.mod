@@ -11,8 +11,8 @@ require (
 	github.com/stretchr/testify v1.8.4
 	github.com/swaggo/fiber-swagger v1.3.0
 	go.mongodb.org/mongo-driver v1.13.1
-	gorm.io/driver/mysql v1.5.2
-	gorm.io/gorm v1.25.6
+	gorm.io/driver/mysql v1.5.6
+	gorm.io/gorm v1.25.7
 )
 
 require (
